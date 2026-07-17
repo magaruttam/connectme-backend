@@ -36,8 +36,6 @@ class LoginController extends Controller
         //Generate sanctum token
         $token = $user->createToken('auth_token')->plainTextToken;
 
-
-
         // 5. Return response
         return response()->json([
             'message' => 'Login successful',
