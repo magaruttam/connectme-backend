@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ActivityCategoryController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -36,5 +37,8 @@ Route::prefix('profile')->middleware('auth:sanctum')->group(function(){
     Route::post('/update', [ProfileController::class, 'updateImage']);
     Route::post('/deleteimage', [ProfileController::class, 'deleteImage']);
 });
+
+//Get Categories
+Route::get('/activity-categories', [ActivityCategoryController::class, 'index']);
 
 
