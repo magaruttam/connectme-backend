@@ -32,6 +32,9 @@ Route::prefix('profile')->middleware('auth:sanctum')->group(function(){
     //Get Profile
     Route::get('getprofile',[ProfileController::class, 'getProfile']);
     Route::put('/updateprofile', [ProfileController::class, 'updateProfile']);
+    Route::post('/upload', [ProfileController::class, 'uploadProfileImage']);
+    Route::post('/update', [ProfileController::class, 'updateImage']);
+    Route::post('/deleteimage', [ProfileController::class, 'deleteImage']);
 });
 
 
