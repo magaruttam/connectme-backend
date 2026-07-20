@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityCategoryController;
+use App\Http\Controllers\ActivityController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -41,4 +42,13 @@ Route::prefix('profile')->middleware('auth:sanctum')->group(function(){
 //Get Categories
 Route::get('/activity-categories', [ActivityCategoryController::class, 'index']);
 
+//CRUD for Activities
+//Create Activity
+
+Route::prefix('activities')->middleware('auth:sanctum')->group(function(){
+    Route::get('/list', [ActivityController::class, 'getAllActivities']);
+    Route::post('/create', [ActivityController::class, 'createActivity']);
+    Route::put('/update/{activity}', [ActivityController::class, 'updateActivity']);
+    Route::delete('/delete/{activity}', [ActivityController::class, 'deleteActivity']);
+});
 
